@@ -26,6 +26,7 @@ class Melon(object):
         self.image_url = image_url
         self.color = color
         self.seedless = seedless
+        self.quantity = 0
 
     def price_str(self):
         """Return price formatted as string $x.xx"""
@@ -37,6 +38,11 @@ class Melon(object):
 
         return "<Melon: {}, {}, {}>".format(self.melon_id, self.common_name, self.price_str())
 
+    def set_total_cost(self):
+        self.total_cost = self.quantity * self.price
+
+    def total_cost_str(self):
+        return "${:.2f}".format(self.total_cost)
 
 def read_melon_types_from_file(filepath):
     """Read melon type data and populate dictionary of melon types.
